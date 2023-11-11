@@ -5,4 +5,5 @@ import fileUpload, { fileValidation } from "../../services/muter.js";
 const router = Router();
 router.post('/singup',fileUpload(fileValidation.image).single('image'),AuthController.sinUp);
 router.post('/singin',AuthController.singIn);
+router.get('/confimEmail/:token',AuthController.confimEmail)
 export default router;

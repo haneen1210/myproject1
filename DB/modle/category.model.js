@@ -24,12 +24,19 @@ status:{
    enum:['Active','Inactive'],
 
 },
-createdBy:{type:Types.ObjectId,ref:'User'},
-updateBy:{type:Types.ObjectId,ref:'User'},
+createdBy:{type:Types.ObjectId,ref:'User',required:true},
+updateBy:{type:Types.ObjectId,ref:'User',required:true},
 },{
-timestamps:true,}
-
+timestamps:true,
+toJSON:{virtuals:true},
+toObject:{virtuals:true},
+}
 );
+categorySchema.virtual('subcategory',{
+    localField:'_id',
+    foreignField:'categoryId',
+    ref:'Subcategory'
+})
 
-const categoryModel = mongoose.model.User || model('category',categorySchema);
+const categoryModel = mongoose.models.Category || model('Category',categorySchema);
 export default categoryModel;

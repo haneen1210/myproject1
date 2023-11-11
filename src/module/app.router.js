@@ -1,8 +1,11 @@
 import connectDB from '../../DB/connection.js';
 import categoriesRouter from './categories/categories.router.js';
 import productsRouter from './products/products.router.js'
+import subcategoriesRouter from './subcategory/subcategory.router.js'
 import authRouter from './auth/auth.router.js'
-const initApp = (app,express)=>{
+import couponRouter from './coupon/coupon.router.js'
+import { sendEmail } from '../services/email.js';
+const initApp = async(app,express)=>{
 app.use(express.json());
 connectDB();
 app.get('/',(req,res)=>{
@@ -12,7 +15,8 @@ app.get('/',(req,res)=>{
 app.use('/auth',authRouter);
 app.use('/categories',categoriesRouter);
 app.use('/products',productsRouter);
-    
+app.use('/supcategory',subcategoriesRouter);
+app.use('/coupony',couponRouter);
 
 app.get("*",(req,res)=>{
 

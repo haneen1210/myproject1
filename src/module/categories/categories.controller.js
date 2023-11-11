@@ -1,10 +1,16 @@
 import slugify from 'slugify'
 import categoryModel from '../../../DB/modle/category.model.js';
 import cloudinary from '../../services/cloudinary.js';
-export const getcategories = async (req, res) => {
-    const categories = await categoryModel.find();
-    return res.status(200).json({ message: "success", categories });
 
+export const getcategories = async (req, res) => {
+    try{
+    const categories = await categoryModel.find().populate('subcategory');
+    return res.status(200).json({ message: "success", categories });
+    }
+    catch(err){
+        return res.status(500).json({ message: "error", err: err.stack });
+
+    }
 }
 
 
@@ -18,7 +24,7 @@ export const createcategories = async (req, res) => {
     const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path, {
         folder: `${process.env.APP_NAME}/categories`
     })
-    const cat = await categoryModel.create({ name, slug: slugify(name), image: { secure_url, public_id } });
+    const cat = await categoryModel.create({ name, slug: slugify(name), image: { secure_url, public_id } ,createdBy:req.user._id,updateBy:req.user._id});
     return res.status(201).json({ message: "success", cat });
 
 }
@@ -58,6 +64,7 @@ export const updateCategory = async (req, res) => {
             await cloudinary.uploader.destroy(categories.image.public_id);
             categories.image = { secure_url, public_id };
         }
+        categories.updateBy=req.user._id;
         await categories.save();
 
         return res.status(200).json({ message: "success" });
