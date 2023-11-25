@@ -5,8 +5,8 @@ const transporter = nodemailer.createTransport({
   auth: {
 
    
-    user: "haneen.sweet56@gmail.com",
-    pass: "wfda aken nvuq uink",
+    user:process.env.EMAILSENDER,
+    pass:process.env.PASSWORDSENDER,
   },
   tls: {
     rejectUnauthorized: false
@@ -14,7 +14,7 @@ const transporter = nodemailer.createTransport({
 });
 
   const info = await transporter.sendMail({
-    from: '"Fred Foo 👻" <haneen.sweet56@gmail.com>',// sender address
+    from: `"h-shop 👻" <${process.env.EMAILSENDER}>`,// sender address
     to, 
     subject, 
     html,
