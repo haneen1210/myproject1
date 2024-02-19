@@ -19,6 +19,9 @@ export const auth=(accessRoles =[])=>{
           const user =await userModel.findById(decoded.id).select("userName role");
           if(!user){ 
             return res.status(400).json({message:"not registerd user "});}
+            if(parseInt(user.changePasswordTime?.gitTime/1000)>decoded.iat){
+return next(new Error(`expird token , plz login `,{cause:400}));
+            }
 
 if(!accessRoles.includes(user.role)){
     return res.status(403).json({message:"not auth user "});

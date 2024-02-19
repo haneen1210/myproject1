@@ -14,7 +14,7 @@ amount:{
 
 
 usedBy:[{type:Types.ObjectId,ref:'User'}],
-expireData:Date,
+expireData:{type:Date,required:true},
 
 
 createdBy:[{type:Types.ObjectId,ref:'User'}],

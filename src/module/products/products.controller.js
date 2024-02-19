@@ -19,7 +19,7 @@ const checkSubCategory = await subcategoryModel.findById(subcategoryId);
 if(!checkSubCategory){
     return res.status(404).json({message:" sub category not found"});
 }req.body.slug=slugify(name);
-req .body.finalPrice=price-(price*(discount || 0)/100);
+req .body.finalPrice=price-(price*(discount || 0)/100).toFixed(2);
 
 const {secure_url,public_id} =await cloudinary.uploader.upload(req.files.mainImage[0].path,{
     folder:`${process.env.APP_NAME}/Product/${req.body.name}/mainImage`
@@ -42,5 +42,19 @@ if(!product){
 return res.status(400).json({message:"success",product});
 
 }
+
+export const getproductsWithCAtegory = async(req,res)=>{
+    const products=await productModel.find({categoryId:req.params.categoryId});
+    return res.json({message:"success",products});
+    
+    }
+
+    export const getproduct = async(req,res)=>{
+        const product=await productModel.findById(req.params.productId);
+        return res.json({message:"success",product});
+        
+        }
+
+
 
 

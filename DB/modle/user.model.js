@@ -55,7 +55,10 @@ enum:['User','Admin'],
 sendCode:{
     type:String,
     default:null,
-}
+},
+changePasswordTime:{
+    type:Date,
+},
 
 },{
 timestamps:true,}
