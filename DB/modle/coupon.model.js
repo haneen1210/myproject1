@@ -5,17 +5,13 @@ type:String,
 required:true,
 unique:true,
 },
-
 amount:{
     type:Number,
     required:true,
 
 },
-
-
 usedBy:[{type:Types.ObjectId,ref:'User'}],
 expireData:{type:Date,required:true},
-
 
 createdBy:[{type:Types.ObjectId,ref:'User'}],
 

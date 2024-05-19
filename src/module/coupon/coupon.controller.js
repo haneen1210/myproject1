@@ -52,7 +52,7 @@ return res.status(200).json({message:"success"});
 
 export const hardDeleted = async(req,res)=>{
     const {id}=req.params;
-    const coupon =await couponModel.findOneAndDelete({_id:id});
+    const coupon =await couponModel.findOneAndDelete({_id:id,isDeleted:true});
     
     if(!coupon){
         return res.status(400).json({message:"cont delete this coupon"}); 

@@ -10,8 +10,8 @@ unique:true,
 slug:{
     type:String,
     required:true,
-
 },
+
 image:{
     type:Object,
     required:true,

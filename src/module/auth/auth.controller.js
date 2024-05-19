@@ -151,8 +151,8 @@ a[x-apple-data-detectors] {
                       <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">If you did not register with us, please disregard this email.</p></td>
                      </tr>
                      <tr>
-                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><!--[if mso]><a href="${req.protocol}://${req.headers.host}/auth/confirmEmail/${token}" target="_blank" hidden>
-	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="${req.protocol}://${req.headers.host}/auth/confirmEmail/${token}" 
+                      <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><!--[if mso]><a href="${req.protocol}://${req.headers.host}/auth/confimEmail/${token}" target="_blank" hidden>
+	<v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" esdevVmlButton href="${req.protocol}://${req.headers.host}/auth/confimEmail/${token}" 
                 style="height:44px; v-text-anchor:middle; width:300px" arcsize="14%" stroke="f"  fillcolor="#5c68e2">
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#ffffff; font-family:arial, "helvetica neue", helvetica, sans-serif; font-size:18px; font-weight:400; line-height:18px;  mso-text-raise:1px'>CONFIRM YOUR EMAIL</center>
